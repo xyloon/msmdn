@@ -1,2 +1,2 @@
 # msmdn
-MSM downloader
+Mangashow.me command line downloader
