@@ -16,7 +16,7 @@ class TestCrawling(TestCase):
         browser = Browser()
         readen = browser.readPage(page_id='427271')
         first_page_info = [one_page_info for one_page_info in readen['page_info'] if one_page_info[1] == '1'][0]
-        readen2 = browser.choosePage(first_page_info[0])
+        readen2 = browser.chooseOption(first_page_info[0])
         self.assertEqual(39, len(readen2['images']))
 
     def test_print_result(self):
