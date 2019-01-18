@@ -8,17 +8,21 @@ title_pattern = re.compile('([\s\S]+)\s+([\d.\-]+)\s*화?')
 page_pattern = re.compile('page-(\d+)')
 remove_hwa_pattern = re.compile('([\d.\-]+)\s*화?')
 
+
 def get_title_parsed(string):
-    processed =  [[y.strip() for y in x] for x in title_pattern.findall(string)]
+    processed = [[y.strip() for y in x] for x in title_pattern.findall(string)]
     return processed[0] if processed else None
+
 
 def get_page_parsed(string):
     processed = page_pattern.findall(string)
     return int(processed[0]) if processed else None
 
+
 def get_remove_hwa(string):
     processed = remove_hwa_pattern.findall(string)
     return processed[0] if processed else None
+
 
 class Browser:
     def __init__(self):
@@ -55,12 +59,12 @@ class Browser:
             }
         raise Exception("Read Problem")
 
-    def readPage(self, page_id='427271'):
+    def read_page(self, page_id='427271'):
         print("requesting ", page_id)
         self.driver.get("https://mangashow.me/bbs/board.php?bo_table=msm_manga&wr_id=" + page_id)
         return self.__page_parse()
 
-    def chooseOption(self, page_id):
+    def choose_option(self, page_id):
         print("requesting ", page_id)
         self.select_elem.select_by_value(page_id)
         return self.__page_parse()
@@ -70,5 +74,6 @@ class Browser:
             self.driver_close()
 
     def driver_close(self):
-        self.driver.close()
-        self.driver = None
+        if self.driver:
+            self.driver.close()
+            self.driver = None

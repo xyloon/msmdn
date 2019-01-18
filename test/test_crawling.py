@@ -10,18 +10,18 @@ class TestCrawling(TestCase):
     
     def test_browser(self):
         browser = Browser()
-        self.assertEqual(35, len(browser.readPage()['images']))
+        self.assertEqual(35, len(browser.read_page()['images']))
 
     def test_browser_choose_option(self):
         browser = Browser()
-        readen = browser.readPage(page_id='427271')
+        readen = browser.read_page(page_id='427271')
         first_page_info = [one_page_info for one_page_info in readen['page_info'] if one_page_info[1] == '1'][0]
-        readen2 = browser.chooseOption(first_page_info[0])
+        readen2 = browser.choose_option(first_page_info[0])
         self.assertEqual(39, len(readen2['images']))
 
     def test_print_result(self):
         browser = Browser()
-        print(browser.readPage())
+        print(browser.read_page())
 
 
 
