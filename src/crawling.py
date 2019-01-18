@@ -64,3 +64,11 @@ class Browser:
         print("requesting ", page_id)
         self.select_elem.select_by_value(page_id)
         return self.__page_parse()
+
+    def __del__(self):
+        if self.driver:
+            self.driver_close()
+
+    def driver_close(self):
+        self.driver.close()
+        self.driver = None
