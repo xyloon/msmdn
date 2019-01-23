@@ -1,6 +1,7 @@
 from unittest import TestCase, main
 from src.crawling import Browser, get_title_parsed, get_page_parsed, get_remove_hwa
 
+driver_location = "../../../executable/web_drivers/chromedriver_mac64/chromedriver"
 
 class TestCrawling(TestCase):
     def setUp(self):
@@ -9,18 +10,18 @@ class TestCrawling(TestCase):
         pass
     
     def test_browser(self):
-        browser = Browser()
+        browser = Browser(driver_location)
         self.assertEqual(35, len(browser.read_page()['images']))
 
     def test_browser_choose_option(self):
-        browser = Browser()
+        browser = Browser(driver_location)
         readen = browser.read_page(page_id='427271')
         first_page_info = [one_page_info for one_page_info in readen['page_info'] if one_page_info[1] == '1'][0]
         readen2 = browser.choose_option(first_page_info[0])
         self.assertEqual(39, len(readen2['images']))
 
     def test_print_result(self):
-        browser = Browser()
+        browser = Browser(driver_location)
         print(browser.read_page())
 
 
