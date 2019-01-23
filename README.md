@@ -10,6 +10,6 @@ Mangashow.me command line downloader
   pip install -r requirements.txt
 
 * Execute
-  python src/exec.py chrome_driver_location download_directory page_number
+  PYTHONPATH="." python src/exec.py chrome_driver_location download_directory page_number
 
 
